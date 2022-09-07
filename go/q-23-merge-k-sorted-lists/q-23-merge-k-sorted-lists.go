@@ -6,7 +6,7 @@ import (
 
 //23.合并K个升序链表.merge-k-sorted-lists
 
-type ListNode = utils.ListNode
+type ListNode = utils.SListNode
 
 //leetcode submit region begin(Prohibit modification and deletion)
 /**

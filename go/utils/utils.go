@@ -2,17 +2,17 @@ package utils
 
 import "fmt"
 
-type ListNode struct {
+type SListNode struct {
 	Val  int
-	Next *ListNode
+	Next *SListNode
 }
 
-func CreatSingleList(data []int) *ListNode {
-	head := &ListNode{}
+func CreatSingleList(data []int) *SListNode {
+	head := &SListNode{}
 	l := len(data)
 	cur := head
 	for i := 0; i < l; i++ {
-		cur.Next = &ListNode{
+		cur.Next = &SListNode{
 			Val:  data[i],
 			Next: nil,
 		}
@@ -21,7 +21,7 @@ func CreatSingleList(data []int) *ListNode {
 	return head.Next
 }
 
-func PrintList(list *ListNode) {
+func PrintList(list *SListNode) {
 	cur := list
 	for cur != nil {
 		fmt.Print(cur.Val)
