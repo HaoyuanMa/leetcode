@@ -17,6 +17,25 @@ type ListNode = utils.SListNode
  * }
  */
 func reverseList(head *ListNode) *ListNode {
+	var dummy *ListNode = nil
+	for head != nil {
+		t := head.Next
+		head.Next = dummy
+		dummy = head
+		head = t
+	}
+	return dummy
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func main() {
+	a := utils.CreatSingleList([]int{1, 2, 3, 4, 5})
+	result := reverseList(a)
+	utils.PrintList(result)
+}
+
+func reverseList_recursion(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
 	}
@@ -28,12 +47,4 @@ func reverseList(head *ListNode) *ListNode {
 	head.Next = nil
 	t.Next = head
 	return res
-}
-
-//leetcode submit region end(Prohibit modification and deletion)
-
-func main() {
-	a := utils.CreatSingleList([]int{1, 2, 3, 4, 5})
-	result := reverseList(a)
-	utils.PrintList(result)
 }
