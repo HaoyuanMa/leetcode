@@ -13,11 +13,10 @@ func removeElement(nums []int, val int) int {
 		if nums[q] != val {
 			nums[p] = nums[q]
 			p++
-			q++
-		} else if nums[q] == val {
+		} else {
 			ans--
-			q++
 		}
+		q++
 	}
 	return ans
 }
