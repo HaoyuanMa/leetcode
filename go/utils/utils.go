@@ -7,6 +7,12 @@ type SListNode struct {
 	Next *SListNode
 }
 
+type BiTreeNode struct {
+	Val   int
+	Left  *BiTreeNode
+	Right *BiTreeNode
+}
+
 func CreatSingleList(data []int) *SListNode {
 	head := &SListNode{}
 	l := len(data)
