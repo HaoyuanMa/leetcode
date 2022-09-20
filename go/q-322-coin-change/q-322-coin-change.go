@@ -21,6 +21,36 @@ func dp(coins []int, amount int) int {
 	if amount == 0 {
 		return 0
 	}
+	memo[0] = 0
+	for i := 1; i <= amount; i++ {
+		memo[i] = 10001
+		for _, coin := range coins {
+			if i-coin >= 0 && memo[i-coin] >= 0 && memo[i-coin]+1 < memo[i] {
+				memo[i] = memo[i-coin] + 1
+			}
+		}
+		if memo[i] == 10001 {
+			memo[i] = -1
+		}
+	}
+	return memo[amount]
+}
+
+//leetcode submit region end(Prohibit modification and deletion)
+
+func main() {
+	c := []int{2}
+	result := coinChange(c, 3)
+	fmt.Println(result)
+}
+
+func dp_recursion(coins []int, amount int) int {
+	if amount < 0 {
+		return -1
+	}
+	if amount == 0 {
+		return 0
+	}
 	if memo[amount] >= -1 {
 		return memo[amount]
 	}
@@ -39,14 +69,6 @@ func dp(coins []int, amount int) int {
 		return -1
 	}
 
-}
-
-//leetcode submit region end(Prohibit modification and deletion)
-
-func main() {
-	c := []int{186, 419, 83, 408}
-	result := coinChange(c, 6249)
-	fmt.Println(result)
 }
 
 // TLE
