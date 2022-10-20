@@ -6,23 +6,25 @@ import "fmt"
 
 // leetcode submit region begin(Prohibit modification and deletion)
 type NumArray struct {
-	array []int
+	array  []int
+	preSum []int
 }
 
 func Constructor(nums []int) NumArray {
 	res := NumArray{}
 	for i := 0; i < len(nums); i++ {
 		res.array = append(res.array, nums[i])
+		if i == 0 {
+			res.preSum = append(res.preSum, nums[0])
+		} else {
+			res.preSum = append(res.preSum, res.preSum[i-1]+nums[i])
+		}
 	}
 	return res
 }
 
 func (this *NumArray) SumRange(left int, right int) int {
-	ans := 0
-	for i := left; i <= right; i++ {
-		ans += this.array[i]
-	}
-	return ans
+	return this.preSum[right] - this.preSum[left] + this.array[left]
 }
 
 /**
